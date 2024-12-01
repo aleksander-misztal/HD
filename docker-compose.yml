@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: ./app  # Build from the app directory
+      dockerfile: Dockerfile  # Use the Dockerfile in the app directory
+    ports:
+      - "8000:8000"  # Expose app on port 8000
+    volumes:
+      - ./app:/app  # Mount the app directory inside the container
+    environment:
+      - PYTHONUNBUFFERED=1  # Ensure output is not buffered
+      - MONGO_URI=  # MongoDB URI
+    depends_on:
+      - mongo  # App should wait for MongoDB to be available
+
+  mongo:
+    image: mongo:latest  # Use the latest MongoDB image
+    ports:
+      - "28017:27017"  # Expose MongoDB on port 28017
+    volumes:
+      - mongo_data:/data/db  # Persistent MongoDB data storage
+
+  streamlit:
+    build:
+      context: ./streamlit  # Build from the streamlit directory
+      dockerfile: Dockerfile  # Use the Dockerfile in the streamlit directory
+    ports:
+      - "8501:8501"  # Expose Streamlit on port 8501
+    volumes:
+      - ./streamlit:/streamlit  # Mount streamlit directory inside the container
+    depends_on:
+      - mongo  # Streamlit should wait for MongoDB
+
+volumes:
+  mongo_data:  # Persist MongoDB data on the host

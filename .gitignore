@@ -1,0 +1,45 @@
+# Wyklucz pliki Python bytecode
+*.pyc
+*.pyo
+__pycache__/
+
+# Wyklucz pliki środowiska wirtualnego
+env/
+venv/
+ENV/
+VENV/
+*.egg-info/
+.eggs/
+
+# Wyklucz pliki związane z logami
+*.log
+*.out
+*.err
+
+# Wyklucz pliki systemowe
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Wyklucz pliki testowe/tymczasowe
+.coverage
+*.coverage.*
+.tox/
+nosetests.xml
+test-results/
+*.pytest_cache/
+
+# Wyklucz pliki konfiguracyjne specyficzne dla użytkownika
+*.ini
+*.local
+*.cfg
+
+# Wyklucz pliki generowane przez narzędzia CI/CD
+build/
+dist/
+*.lock
+node_modules/
+yarn.lock

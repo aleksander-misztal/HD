@@ -1,0 +1,9 @@
+pymongo
+beautifulsoup4
+fastapi
+uvicorn
+apscheduler
+tenacity
+requests
+pandas
+python-multipart
